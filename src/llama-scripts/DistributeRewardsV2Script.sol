@@ -12,16 +12,16 @@ contract DistributeRewardsV2ScriptBase is LlamaBaseScript {
   IRegistryDiamond public constant REGISTRY_DIAMOND = IRegistryDiamond(0x7c0422b31401C936172C897802CF0373B35B7698);
 
   /// @notice The Treasury Llama account address.
-  LlamaAccount public constant RIVER_TREASURY = LlamaAccount(payable(0x8ee48C016b932A69779A25133b53F0fFf66C85C0));
+  LlamaAccount public constant TOWNS_TREASURY = LlamaAccount(payable(0x8ee48C016b932A69779A25133b53F0fFf66C85C0));
 
-  /// @notice The RVR ERC20 token address.
-  IERC20 public constant RVR_TOKEN = IERC20(0x91930fd11ABAa5241241d3B07c02A8d0B5ac1920);
+  /// @notice The TOWNS ERC20 token address.
+  IERC20 public constant TOWNS_TOKEN = IERC20(0x00000000A22C618fd6b4D7E9A335C4B96B189a38);
 
   function distributeRewards() external onlyDelegateCall {
     uint256 rewardAmount = REGISTRY_DIAMOND.getPeriodRewardAmount();
 
-    RIVER_TREASURY.transferERC20(
-      LlamaAccount.ERC20Data({token: RVR_TOKEN, recipient: address(REGISTRY_DIAMOND), amount: rewardAmount})
+    TOWNS_TREASURY.transferERC20(
+      LlamaAccount.ERC20Data({token: TOWNS_TOKEN, recipient: address(REGISTRY_DIAMOND), amount: rewardAmount})
     );
 
     REGISTRY_DIAMOND.notifyRewardAmount(rewardAmount);
@@ -34,16 +34,16 @@ contract DistributeRewardsV2ScriptBaseSepolia is LlamaBaseScript {
   IRegistryDiamond public constant REGISTRY_DIAMOND = IRegistryDiamond(0x08cC41b782F27d62995056a4EF2fCBAe0d3c266F);
 
   /// @notice The Treasury Llama account address.
-  LlamaAccount public constant RIVER_TREASURY = LlamaAccount(payable(0x8ee48C016b932A69779A25133b53F0fFf66C85C0));
+  LlamaAccount public constant TOWNS_TREASURY = LlamaAccount(payable(0x8ee48C016b932A69779A25133b53F0fFf66C85C0));
 
-  /// @notice The RVR ERC20 token address.
-  IERC20 public constant RVR_TOKEN = IERC20(0x24e3123E1b30E041E2df26Da9d6140c5B07Fe4F0);
+  /// @notice The TOWNS ERC20 token address.
+  IERC20 public constant TOWNS_TOKEN = IERC20(0x00000000A22C618fd6b4D7E9A335C4B96B189a38);
 
   function distributeRewards() external onlyDelegateCall {
     uint256 rewardAmount = REGISTRY_DIAMOND.getPeriodRewardAmount();
 
-    RIVER_TREASURY.transferERC20(
-      LlamaAccount.ERC20Data({token: RVR_TOKEN, recipient: address(REGISTRY_DIAMOND), amount: rewardAmount})
+    TOWNS_TREASURY.transferERC20(
+      LlamaAccount.ERC20Data({token: TOWNS_TOKEN, recipient: address(REGISTRY_DIAMOND), amount: rewardAmount})
     );
 
     REGISTRY_DIAMOND.notifyRewardAmount(rewardAmount);
